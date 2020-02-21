@@ -1,0 +1,8 @@
+name = Drupal Commerce Commerce Nelnet QuikPAY
+description = Implements Nelnet QuikPAY integration method for Drupal Commerce.
+core = 7.x
+version = 7.x-2.1
+package = Commerce (contrib)
+dependencies[] = quikpay_feature
+configure = admin/commerce/config/payment-methods
+files[] = quikpay.pages.inc

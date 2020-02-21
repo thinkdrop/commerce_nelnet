@@ -1,0 +1,41 @@
+<?php
+/**
+ * @file
+ * Drupal Commerce Nelnet Payment Method (un)install hooks.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function quikpay_install() {
+  variable_set("commerce_quikpay_accounts", array("Default"));
+
+  // Create taxonomy vocabulary for multiple order types
+  $new_vocab = (object) array(
+    'name' => 'Nelnet QuikPAY Multiple Order Types',
+    'description' => 'Vocabulary used for multiple QuikPAY order types. See module README.md for more information.',
+    'machine_name' => 'quikpay_order_type',
+  );
+  taxonomy_vocabulary_save($new_vocab);
+
+  // Add first term as example into multiple order type vocabulary from above
+  $vocab = taxonomy_vocabulary_machine_name_load('quikpay_order_type');
+  $term1 = (object) array(
+    'name' => 'ExampleOrderType',
+    'description' => 'Example order type for multiple QuikPAY order types.',
+    'vid' => $vocab->vid,
+  );
+  taxonomy_term_save($term1);
+
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function quikpay_uninstall() {
+  variable_del("commerce_quikpay_accounts");
+
+  // Delete taxonomy vocabulary for multiple order types if module is uninstalled
+  $vocab = taxonomy_vocabulary_machine_name_load('quikpay_order_type');
+  taxonomy_vocabulary_delete($vocab->vid);
+}
