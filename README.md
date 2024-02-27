@@ -51,6 +51,17 @@ A hook is available to alter hash parameters, but this shouldn't be needed in mo
 ```hook_quikpay_hash_param_alter(&$variables, &$param, $order)```
 
 ### Credits
+
+#### Version 2.x
+
+Drupal 10 version being developed by:
+
+* Jon Pugh - @jonpugh
+
+#### Version 7.x-1.x
+
+Original Drupal 7 codebase was located at https://code.osu.edu/osu_commerce/nelnet-quikpay.
+
 The QuikPAY module was created by:
 * Michael Samuelson (<mlsamuel@asu.edu> / <mlsamuelson@gmail.com> / http://mlsamuelson.com)
 * Zohair Zaidi (<zohair.zaidi@asu.edu> / <zohair.zaidi@gmail.com>)
